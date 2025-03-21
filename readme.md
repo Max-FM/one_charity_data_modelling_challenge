@@ -102,10 +102,10 @@ erDiagram
 ### 🔑 Key Entities
 
 - **DONOR**
-  Represents individuals, companies, or other entities donating funds. Nullable `GovernmentID` supports unverified donors.
+  - Represents individuals, companies, or other entities donating funds. Nullable `GovernmentID` supports unverified donors.
 
 - **CHARITABLE_ORGANIZATION**
-  The only entities eligible to receive funds or provide services.
+  - The only entities eligible to receive funds or provide services.
 
 - **TRANSACTION**
   Records money sent from a Donor to a Charitable Organization, including:
@@ -114,30 +114,30 @@ erDiagram
   - `NetAmount`: Actual amount received by the organization
 
 - **SERVICE**
-  Classifies the purpose of the transaction (e.g., Food Aid, Medical Support).
+  - Classifies the purpose of the transaction (e.g., Food Aid, Medical Support).
 
 - **AUDIT_LOG**
-  Tracks audits of individual transactions, including findings and responsible auditor.
+  - Tracks audits of individual transactions, including findings and responsible auditor.
 
 - **ORGANIZATION_RATING**
-  Represents performance-based ratings, strictly assigned via audits.
+  - Represents performance-based ratings, strictly assigned via audits.
 
 - **AUDITOR**
-  Stores information on the staff or agents who conduct audits.
+  - Stores information on the staff or agents who conduct audits.
 
 ### ✅ Key Design Choices
 
 - **Nullable Government IDs**
-  Not all donors have official IDs. Surrogate keys will be used to identify donors within the system.
+  - Not all donors have official IDs. Surrogate keys will be used to identify donors within the system.
 
 - **Service Fees**
-  Tracked separately from donation amount to calculate net received by organizations.
+  - Tracked separately from donation amount to calculate net received by organizations.
 
 - **Flexible Donor Types**
-  Supports individuals, companies, and other entities as donors.
+  - Supports individuals, companies, and other entities as donors.
 
 - **Performance & Data Integrity**
-  All relationships are normalized to 3.N.F. to ensure maximum write performance and enforce referential integrity (e.g., FK constraints between donors and transactions).
+  - All relationships are normalized to 3.N.F. to ensure maximum write performance and enforce referential integrity (e.g., FK constraints between donors and transactions).
 
 ---
 
@@ -207,29 +207,30 @@ erDiagram
 ### ⭐ Star Schema Components
 
 - **FactTransaction**
-  Measures donation volume, service fees, net received, and transaction counts.
+  - Measures donation volume, service fees, net received, and transaction counts.
 
 - **DimDonor**
-  Describes donor attributes (type, name, optional government ID).
+  - Describes donor attributes (type, name, optional government ID).
 
 - **DimOrganization**
-  Contains static org info + average performance rating.
+  - Contains static org info + average performance rating.
 
 - **DimService**
-  Classifies services funded by donations.
+  - Classifies services funded by donations.
 
 - **DimDate**
-  Calendar dimension for time-based analysis (day, month, year, fiscal period).
+  Ca- lendar dimension for time-based analysis (day, month, year, fiscal period).
 
 ### ✅ Key Design Choices
 
+- **Dimensional Modeling**
+  - Simplifies complex queries and enables fast, efficient analytics.
+
 - **Denormalized for Performance**
-  Star schema design optimizes read performance for aggregate queries and time-based analysis.
+  - Star schema design optimizes read performance for aggregate queries and time-based analysis.
 
 - **Date Dimension**
-  Supports time-based analysis and trend reporting.
-
-- **
+  - Supports time-based analysis and trend reporting.
 
 ### 📊 Key Metrics Supported
 
