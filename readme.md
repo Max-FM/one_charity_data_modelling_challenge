@@ -9,7 +9,7 @@ This project presents the **operational (OLTP)** and **analytical (OLAP)** data 
 
 **Purpose:** Capture day-to-day transactions, donor info, service details, audits, and organization ratings.
 
-```Mermaid
+```mermaid
 erDiagram
 
     DONOR {
@@ -145,7 +145,7 @@ erDiagram
 
 **Purpose:** Power KPI dashboards, financial reports, and trend analysis using a star schema.
 
-```Mermaid
+```mermaid
 erDiagram
 
     FACT_TRANSACTION {
@@ -278,7 +278,7 @@ This alternative is ideal when:
 
 ### 📊 OLTP Model (Beneficiary Variant)
 
-```Mermaid
+```mermaid
 erDiagram
 
     BENEFICIARY {
@@ -369,7 +369,7 @@ erDiagram
 
 ### 📈 OLAP Model (Beneficiary Variant)
 
-```Mermaid
+```mermaid
 erDiagram
 
     FACT_TRANSACTION {
