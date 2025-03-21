@@ -100,7 +100,7 @@ erDiagram
 
 ### 🔑 Key Entities
 
--   \*\*DONOR Represents individuals, companies, or other entities donating funds. Nullable `GovernmentID` supports unverified donors.
+-   **DONOR** Represents individuals, companies, or other entities donating funds. Nullable `GovernmentID` supports unverified donors.
 
 -   **CHARITABLE_ORGANIZATION** The only entities eligible to receive funds or provide services.
 
