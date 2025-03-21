@@ -273,8 +273,6 @@ This alternative is ideal when:
 - All donations are personal and tied to verified or system-identified users
 - Simpler business rules apply to identity and reporting
 
-> ✅ Both `DONOR` and `BENEFICIARY` versions are included in the diagrams for flexibility.
-
 ### 📊 OLTP Model (Beneficiary Variant)
 
 ```mermaid
