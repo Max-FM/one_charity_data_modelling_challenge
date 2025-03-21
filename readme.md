@@ -107,11 +107,11 @@ erDiagram
 - **CHARITABLE_ORGANIZATION**
   - The only entities eligible to receive funds or provide services.
 
-- **TRANSACTION**
-  Records money sent from a Donor to a Charitable Organization, including:
-  - `TotalAmount`: Full donation including service fee
-  - `ServiceFee`: Fee charged
-  - `NetAmount`: Actual amount received by the organization
+- **TRANSACTION**:
+  - Records money sent from a Donor to a Charitable Organization, including:
+    - `TotalAmount`: Full donation including service fee
+    - `ServiceFee`: Fee charged
+    - `NetAmount`: Actual amount received by the organization
 
 - **SERVICE**
   - Classifies the purpose of the transaction (e.g., Food Aid, Medical Support).
