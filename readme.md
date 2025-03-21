@@ -219,7 +219,7 @@ erDiagram
   - Classifies services funded by donations.
 
 - **DimDate**
-  Ca- lendar dimension for time-based analysis (day, month, year, fiscal period).
+  - Calendar dimension for time-based analysis (day, month, year, fiscal period).
 
 ### ✅ Key Design Choices
 
@@ -229,8 +229,6 @@ erDiagram
 - **Denormalized for Performance**
   - Star schema design optimizes read performance for aggregate queries and time-based analysis.
 
-- **Date Dimension**
-  - Supports time-based analysis and trend reporting.
 
 ### 📊 Key Metrics Supported
 
