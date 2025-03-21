@@ -1,0 +1,57 @@
+erDiagram
+
+    FACT_TRANSACTION {
+        int TransactionID PK
+        int BeneficiaryKey FK
+        int OrganizationKey FK
+        int ServiceKey FK
+        int DateKey FK
+        decimal TotalAmount "Full amount before fees"
+        decimal ServiceFee "Fee charged"
+        decimal NetAmount "Amount received after fee"
+        int TransactionCount
+    }
+
+
+    DIM_BENEFICIARY {
+        int BeneficiaryKey PK
+        string GovernmentID "Nullable - Some beneficiaries do not have this"
+        string FirstName
+        string LastName
+        string Gender
+        string AgeGroup
+        string Region
+    }
+
+
+    DIM_ORGANIZATION {
+        int OrganizationKey PK
+        string OrganizationName
+        string Category
+        string Region
+        int AverageRating
+    }
+
+
+    DIM_SERVICE {
+        int ServiceKey PK
+        string ServiceName
+        string Category
+    }
+
+
+    DIM_DATE {
+        int DateKey PK
+        date FullDate
+        int Day
+        int Month
+        int Quarter
+        int Year
+        string FiscalYear
+    }
+
+
+    FACT_TRANSACTION ||--o{ DIM_BENEFICIARY : "by beneficiary"
+    FACT_TRANSACTION ||--o{ DIM_ORGANIZATION : "by organization"
+    FACT_TRANSACTION ||--o{ DIM_SERVICE : "by service"
+    FACT_TRANSACTION ||--o{ DIM_DATE : "by date"

@@ -1,0 +1,56 @@
+erDiagram
+
+    FACT_TRANSACTION {
+        int TransactionID PK
+        int DonorKey FK
+        int OrganizationKey FK
+        int ServiceKey FK
+        int DateKey FK
+        decimal TotalAmount "Full amount before fees"
+        decimal ServiceFee "Fee charged"
+        decimal NetAmount "Amount received after fee"
+        int TransactionCount
+    }
+
+
+    DIM_DONOR {
+        int DonorKey PK
+        string DonorType "Individual, Company, Other"
+        string Name
+        string ContactInfo
+        string Address
+        string GovernmentID "Nullable - Some donors do not have this"
+    }
+
+
+    DIM_ORGANIZATION {
+        int OrganizationKey PK
+        string OrganizationName
+        string Category
+        string Region
+        int AverageRating
+    }
+
+
+    DIM_SERVICE {
+        int ServiceKey PK
+        string ServiceName
+        string Category
+    }
+
+
+    DIM_DATE {
+        int DateKey PK
+        date FullDate
+        int Day
+        int Month
+        int Quarter
+        int Year
+        string FiscalYear
+    }
+
+
+    FACT_TRANSACTION ||--o{ DIM_DONOR : "by donor"
+    FACT_TRANSACTION ||--o{ DIM_ORGANIZATION : "by organization"
+    FACT_TRANSACTION ||--o{ DIM_SERVICE : "by service"
+    FACT_TRANSACTION ||--o{ DIM_DATE : "by date"

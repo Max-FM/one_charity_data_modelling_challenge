@@ -1,0 +1,86 @@
+erDiagram
+
+    BENEFICIARY {
+        int BeneficiaryID PK
+        string FirstName
+        string LastName
+        string DateOfBirth
+        string ContactInfo
+        string Address
+        string GovernmentID "Nullable - Some beneficiaries do not have this"
+        datetime CreatedAt
+    }
+
+
+    CHARITABLE_ORGANIZATION {
+        int OrganizationID PK
+        string OrganizationName
+        string RegistrationNumber
+        string Category
+        string ContactInfo
+        string Address
+        datetime CreatedAt
+    }
+
+
+    SERVICE {
+        int ServiceID PK
+        string ServiceName
+        string Category
+        string Description
+    }
+
+
+    TRANSACTION {
+        int TransactionID PK
+        int BeneficiaryID FK
+        int OrganizationID FK
+        int ServiceID FK
+        datetime TransactionTimestamp
+        decimal TotalAmount "Full amount including fees"
+        decimal ServiceFee "Fee charged"
+        decimal NetAmount "Amount received after fee"
+        string TransactionDetails
+        boolean IsAudited
+        datetime AuditDate
+        string AuditNotes
+        datetime CreatedAt
+    }
+
+
+    ORGANIZATION_RATING {
+        int RatingID PK
+        int OrganizationID FK
+        int AuditID FK
+        int RatingScore
+        string Comments
+        datetime RatingDate
+    }
+
+
+    AUDIT_LOG {
+        int AuditID PK
+        int TransactionID FK
+        datetime AuditTimestamp
+        string Findings
+        string ActionTaken
+        int AuditorID FK
+    }
+
+
+    AUDITOR {
+        int AuditorID PK
+        string AuditorName
+        string ContactInfo
+    }
+
+
+    BENEFICIARY ||--o{ TRANSACTION : "makes"
+    CHARITABLE_ORGANIZATION ||--o{ TRANSACTION : "receives"
+    SERVICE ||--o{ TRANSACTION : "categorizes"
+
+    CHARITABLE_ORGANIZATION ||--o{ ORGANIZATION_RATING : "receives"
+    AUDIT_LOG ||--o{ ORGANIZATION_RATING : "determines"
+
+    TRANSACTION ||--o{ AUDIT_LOG : "is audited"
+    AUDITOR ||--o{ AUDIT_LOG : "performs"
